@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>EyeScanDrive - Tu Aliado Contra la Fatiga al Volante</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4F86F7",
+              "background-light": "#f6f7f8",
+              "background-dark": "#12182B",
+            },
+            fontFamily: {
+              display: ["Space Grotesk", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+  </head>
+  <body class="bg-background-dark font-display text-gray-200">
+    <div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+      <header
+        class="sticky top-0 z-50 flex w-full justify-center border-b border-solid border-white/10 bg-background-dark/80 backdrop-blur-sm"
+      >
+        <div
+          class="flex w-full max-w-6xl items-center justify-between whitespace-nowrap px-4 py-3 md:px-8"
+        >
+          <div class="flex items-center gap-4 text-white">
+            <div class="h-6 w-6 text-primary">
+              <svg
+                fill="currentColor"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z"
+                ></path>
+              </svg>
+            </div>
+            <h2
+              class="text-white text-xl font-bold leading-tight tracking-[-0.015em]"
+            >
+              EyeScanDrive
+            </h2>
+          </div>
+          <nav class="hidden items-center gap-9 md:flex">
+            <a
+              class="text-sm font-medium leading-normal text-white transition-colors hover:text-primary"
+              href="#beneficios"
+              >Beneficios</a
+            >
+            <a
+              class="text-sm font-medium leading-normal text-white transition-colors hover:text-primary"
+              href="#como-funciona"
+              >El Secreto</a
+            >
+            <a
+              class="text-sm font-medium leading-normal text-white transition-colors hover:text-primary"
+              href="#faq"
+              >FAQ</a
+            >
+          </nav>
+          <div class="flex items-center gap-4">
+            <button
+              id="download-btn-header"
+              class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-primary px-4 text-sm font-bold leading-normal tracking-[0.015em] text-white transition-transform hover:scale-105"
+            >
+              <span class="truncate">Descargar APK</span>
+            </button>
+            <button
+              id="mobile-menu-toggle"
+              class="md:hidden flex items-center justify-center p-2 rounded-lg text-white hover:bg-white/10 transition-colors"
+            >
+              <span class="material-symbols-outlined text-3xl">menu</span>
+            </button>
+          </div>
+        </div>
+        <div
+          id="mobile-menu"
+          class="absolute top-full left-0 w-full bg-background-dark/95 backdrop-blur-sm border-b border-white/10 hidden md:hidden"
+        >
+          <nav class="flex flex-col gap-2 p-4">
+            <a
+              class="block p-2 text-sm font-medium leading-normal text-white transition-colors hover:text-primary hover:bg-white/5 rounded-lg"
+              href="#beneficios"
+              >Beneficios</a
+            >
+            <a
+              class="block p-2 text-sm font-medium leading-normal text-white transition-colors hover:text-primary hover:bg-white/5 rounded-lg"
+              href="#como-funciona"
+              >El Secreto</a
+            >
+            <a
+              class="block p-2 text-sm font-medium leading-normal text-white transition-colors hover:text-primary hover:bg-white/5 rounded-lg"
+              href="#faq"
+              >FAQ</a
+            >
+          </nav>
+        </div>
+      </header>
+      <main class="flex w-full grow flex-col items-center">
+        <div class="flex w-full max-w-6xl flex-col px-4 py-16 sm:py-20 md:px-8">
+          <section class="w-full @container">
+            <div class="@[480px]:p-4">
+              <div
+                class="relative flex min-h-[480px] flex-col items-center justify-center gap-6 overflow-hidden bg-cover bg-center bg-no-repeat p-4 text-center @[480px]:gap-8 @[480px]:rounded-xl"
+                data-alt="Abstract animation of brainwaves or sleep cycles in dark blue and purple tones"
+                style="
+                  background-image: linear-gradient(
+                      rgba(18, 24, 43, 0.6) 0%,
+                      rgba(18, 24, 43, 0.9) 100%
+                    ),
+                    url('https://lh3.googleusercontent.com/aida-public/AB6AXuADHA_Ly0GGF1SZCHmOQFynEEUeOJiVtppOO2hMiaay7kM2GMRKsJrqSGrP5YMCvd--f5hyRHemI0sq2YrnwyffpKn3K0IfDLrcWOsHmsqbCoFyYZl0UDEb2pnUDZpcuWdWv5NXpEXC7_BJ09TaQlAzL65dsnW1bF-DFMANpjt4quNiMbr_xcWHRE412GlQOdnnfYX7FDnPE4vE2Bl7NWmsqwZKZRqVuDsrHzkay3cLBa2HKHNhemHDDFWZG0h5wVRu-eTwlmw_JDQ');
+                "
+              >
+                <div class="flex flex-col gap-2">
+                  <h1
+                    class="text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl md:text-6xl"
+                  >
+                    EyeScanDrive: Tu Aliado Contra la Fatiga al Volante
+                  </h1>
+                  <h2
+                    class="mx-auto max-w-2xl text-base font-normal leading-normal text-gray-300 md:text-lg"
+                  >
+                    Monitorea tus síntomas de sueño en tiempo real con
+                    inteligencia artificial y evita accidentes. Descarga la APK
+                    y conduce seguro.
+                  </h2>
+                </div>
+                <button
+                  id="download-btn-hero"
+                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary h-12 px-5 text-base font-bold leading-normal tracking-[0.015em] text-white transition-transform hover:scale-105"
+                >
+                  <span class="truncate">Descargar la APK Ahora</span>
+                </button>
+              </div>
+            </div>
+          </section>
+          <section
+            class="flex w-full flex-col gap-10 px-0 py-16 @container md:px-4 md:py-20"
+            id="beneficios"
+          >
+            <div class="flex flex-col gap-4 text-center">
+              <h2
+                class="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl"
+              >
+                Conduce con Total Seguridad y Tranquilidad
+              </h2>
+              <p
+                class="mx-auto max-w-3xl text-base font-normal leading-normal text-gray-300"
+              >
+                Nuestra app te da herramientas clave para un viaje más seguro,
+                alertándote antes de que la fatiga se convierta en un riesgo.
+              </p>
+            </div>
+            <div
+              class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4 p-0 md:gap-6"
+            >
+              <div
+                class="flex flex-1 flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-primary/50"
+              >
+                <span class="material-symbols-outlined text-3xl text-primary"
+                  >shield</span
+                >
+                <div class="flex flex-col gap-1">
+                  <h3 class="text-lg font-bold leading-tight text-white">
+                    Viajes Más Seguros
+                  </h3>
+                  <p class="text-sm font-normal leading-normal text-gray-400">
+                    Reduce drásticamente el riesgo de accidentes causados por la
+                    fatiga.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex flex-1 flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-primary/50"
+              >
+                <span class="material-symbols-outlined text-3xl text-primary"
+                  >alarm</span
+                >
+                <div class="flex flex-col gap-1">
+                  <h3 class="text-lg font-bold leading-tight text-white">
+                    Alerta Inteligente
+                  </h3>
+                  <p class="text-sm font-normal leading-normal text-gray-400">
+                    Recibe avisos precisos antes de que el sueño te venza.
+                  </p>
+                </div>
+              </div>
+              <div
+                class="flex flex-1 flex-col gap-3 rounded-xl border border-white/10 bg-white/5 p-6 transition-colors hover:border-primary/50"
+              >
+                <span class="material-symbols-outlined text-3xl text-primary"
+                  >sentiment_very_satisfied</span
+                >
+                <div class="flex flex-col gap-1">
+                  <h3 class="text-lg font-bold leading-tight text-white">
+                    Conducción Optimista
+                  </h3>
+                  <p class="text-sm font-normal leading-normal text-gray-400">
+                    Disfruta de cada viaje con la tranquilidad de estar
+                    protegido.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="w-full py-16 sm:py-20" id="como-funciona">
+            <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+              <div class="flex flex-col gap-6">
+                <div class="flex flex-col gap-3">
+                  <h2
+                    class="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl"
+                  >
+                    El Secreto: Tu Copiloto Inteligente
+                  </h2>
+                  <p class="text-gray-300">
+                    EyeScanDrive es un sistema de monitoreo que utiliza escaneo
+                    facial y biométrico, impulsado por machine learning, para
+                    detectar síntomas de sueño. Nuestra IA analiza en tiempo
+                    real indicadores clave como el parpadeo y la posición de la
+                    cabeza para alertarte antes de que sea un riesgo.
+                  </p>
+                </div>
+                <div class="flex flex-col gap-4">
+                  <div class="flex items-start gap-4">
+                    <span class="material-symbols-outlined mt-1 text-primary"
+                      >camera</span
+                    >
+                    <div>
+                      <h4 class="font-bold text-white">Análisis Facial</h4>
+                      <p class="text-gray-400">
+                        Usa la cámara de tu móvil para monitorear patrones de
+                        parpadeo y bostezos.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-4">
+                    <span class="material-symbols-outlined mt-1 text-primary"
+                      >neurology</span
+                    >
+                    <div>
+                      <h4 class="font-bold text-white">Machine Learning</h4>
+                      <p class="text-gray-400">
+                        El algoritmo aprende tus patrones para ofrecer alertas
+                        cada vez más precisas.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-4">
+                    <span class="material-symbols-outlined mt-1 text-primary"
+                      >shield</span
+                    >
+                    <div>
+                      <h4 class="font-bold text-white">Privacidad Primero</h4>
+                      <p class="text-gray-400">
+                        El procesamiento se realiza en tu dispositivo, tus datos
+                        nunca salen de tu móvil.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-center justify-center">
+                <div class="relative w-[174px]">
+                  <!-- Carrusel de imágenes -->
+                  <div
+                    class="relative overflow-hidden rounded-[35px] shadow-2xl shadow-primary/20"
+                    style="height: 358px"
+                  >
+                    <div
+                      id="carousel-container"
+                      class="flex transition-transform duration-500 ease-in-out h-full"
+                    >
+                      <img
+                        src="assets/Imagen1.png"
+                        alt="EyeScanDrive - Pantalla 1"
+                        class="w-[174px] h-[358px] flex-shrink-0 object-contain"
+                        loading="lazy"
+                      />
+                      <img
+                        src="assets/Imagen2.png"
+                        alt="EyeScanDrive - Pantalla 2"
+                        class="w-[174px] h-[358px] flex-shrink-0 object-contain"
+                        loading="lazy"
+                      />
+                      <img
+                        src="assets/Imagen3.png"
+                        alt="EyeScanDrive - Pantalla 3"
+                        class="w-[174px] h-[358px] flex-shrink-0 object-contain"
+                        loading="lazy"
+                      />
+                      <img
+                        src="assets/Imagen4.png"
+                        alt="EyeScanDrive - Pantalla 4"
+                        class="w-[174px] h-[358px] flex-shrink-0 object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Botones de navegación -->
+                  <button
+                    id="carousel-prev"
+                    class="absolute -left-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-background-dark/90 border border-white/10 text-white hover:bg-primary hover:border-primary transition-all backdrop-blur-sm shadow-lg"
+                    aria-label="Imagen anterior"
+                  >
+                    <span class="material-symbols-outlined text-lg"
+                      >chevron_left</span
+                    >
+                  </button>
+                  <button
+                    id="carousel-next"
+                    class="absolute -right-4 top-1/2 -translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-background-dark/90 border border-white/10 text-white hover:bg-primary hover:border-primary transition-all backdrop-blur-sm shadow-lg"
+                    aria-label="Imagen siguiente"
+                  >
+                    <span class="material-symbols-outlined text-lg"
+                      >chevron_right</span
+                    >
+                  </button>
+
+                  <!-- Indicadores de puntos -->
+                  <div
+                    class="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5"
+                  >
+                    <button
+                      class="carousel-dot w-1.5 h-1.5 rounded-full bg-white/50 hover:bg-white transition-all"
+                      data-index="0"
+                      aria-label="Ver imagen 1"
+                    ></button>
+                    <button
+                      class="carousel-dot w-1.5 h-1.5 rounded-full bg-white/50 hover:bg-white transition-all"
+                      data-index="1"
+                      aria-label="Ver imagen 2"
+                    ></button>
+                    <button
+                      class="carousel-dot w-1.5 h-1.5 rounded-full bg-white/50 hover:bg-white transition-all"
+                      data-index="2"
+                      aria-label="Ver imagen 3"
+                    ></button>
+                    <button
+                      class="carousel-dot w-1.5 h-1.5 rounded-full bg-white/50 hover:bg-white transition-all"
+                      data-index="3"
+                      aria-label="Ver imagen 4"
+                    ></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="w-full py-16 sm:py-20" id="faq">
+            <div class="flex flex-col gap-10">
+              <div class="flex flex-col gap-4 text-center">
+                <h2
+                  class="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl"
+                >
+                  Preguntas Frecuentes
+                </h2>
+                <p class="mx-auto max-w-2xl text-gray-300">
+                  ¿Tienes dudas? Aquí resolvemos las más comunes.
+                </p>
+              </div>
+              <div class="mx-auto w-full max-w-3xl space-y-4">
+                <details
+                  class="group rounded-lg border border-white/10 bg-white/5 p-6 [&_summary::-webkit-details-marker]:hidden"
+                >
+                  <summary
+                    class="flex cursor-pointer items-center justify-between"
+                  >
+                    <h3 class="text-lg font-medium text-white">
+                      ¿Cómo funciona la detección de fatiga?
+                    </h3>
+                    <span class="relative h-5 w-5">
+                      <span
+                        class="material-symbols-outlined transition-all group-open:rotate-180"
+                        >expand_more</span
+                      >
+                    </span>
+                  </summary>
+                  <p class="mt-4 text-gray-400">
+                    EyeScanDrive utiliza la cámara frontal de tu smartphone para
+                    analizar en tiempo real tus rasgos faciales, como la
+                    frecuencia de parpadeo, la duración del cierre de los ojos y
+                    los bostezos. Nuestro algoritmo de machine learning
+                    interpreta estos datos para detectar signos de somnolencia.
+                  </p>
+                </details>
+                <details
+                  class="group rounded-lg border border-white/10 bg-white/5 p-6 [&_summary::-webkit-details-marker]:hidden"
+                >
+                  <summary
+                    class="flex cursor-pointer items-center justify-between"
+                  >
+                    <h3 class="text-lg font-medium text-white">
+                      ¿Afecta al rendimiento de mi teléfono o a la batería?
+                    </h3>
+                    <span class="relative h-5 w-5">
+                      <span
+                        class="material-symbols-outlined transition-all group-open:rotate-180"
+                        >expand_more</span
+                      >
+                    </span>
+                  </summary>
+                  <p class="mt-4 text-gray-400">
+                    La aplicación está optimizada para un consumo eficiente de
+                    recursos. Aunque el uso de la cámara consume batería, hemos
+                    implementado modos de ahorro de energía y el impacto es
+                    similar al de una aplicación de navegación GPS en uso
+                    continuo.
+                  </p>
+                </details>
+                <details
+                  class="group rounded-lg border border-white/10 bg-white/5 p-6 [&_summary::-webkit-details-marker]:hidden"
+                >
+                  <summary
+                    class="flex cursor-pointer items-center justify-between"
+                  >
+                    <h3 class="text-lg font-medium text-white">
+                      ¿Mis datos están seguros?
+                    </h3>
+                    <span class="relative h-5 w-5">
+                      <span
+                        class="material-symbols-outlined transition-all group-open:rotate-180"
+                        >expand_more</span
+                      >
+                    </span>
+                  </summary>
+                  <p class="mt-4 text-gray-400">
+                    Absolutamente. La privacidad es nuestra prioridad. Todo el
+                    procesamiento de imágenes se realiza localmente en tu
+                    dispositivo. Ningún dato facial o de video se almacena ni se
+                    envía a la nube. Solo se guardan registros anónimos de
+                    eventos de fatiga para tu consulta personal.
+                  </p>
+                </details>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer
+        class="w-full border-t border-solid border-white/10 bg-background-dark"
+      >
+        <div
+          class="mx-auto flex w-full max-w-6xl flex-col items-center justify-center gap-8 px-4 py-12 text-center md:px-8 md:py-16"
+        >
+          <div class="flex flex-col gap-2">
+            <h2 class="text-2xl font-bold text-white">
+              ¿Listo para Viajes más Seguros?
+            </h2>
+            <p class="text-gray-300">
+              Descarga la APK de EyeScanDrive ahora y comienza a conducir con la
+              tranquilidad de tener un copiloto inteligente.
+            </p>
+          </div>
+          <button
+            id="download-btn-footer"
+            class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary h-12 px-5 text-base font-bold leading-normal tracking-[0.015em] text-white transition-transform hover:scale-105"
+          >
+            <span class="truncate">Descargar la APK</span>
+          </button>
+          <div
+            class="mt-8 flex w-full flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 sm:flex-row"
+          >
+            <div class="flex items-center gap-2 text-sm text-gray-400">
+              <div class="h-5 w-5 text-primary">
+                <svg
+                  fill="currentColor"
+                  viewBox="0 0 48 48"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M24 45.8096C19.6865 45.8096 15.4698 44.5305 11.8832 42.134C8.29667 39.7376 5.50128 36.3314 3.85056 32.3462C2.19985 28.361 1.76794 23.9758 2.60947 19.7452C3.451 15.5145 5.52816 11.6284 8.57829 8.5783C11.6284 5.52817 15.5145 3.45101 19.7452 2.60948C23.9758 1.76795 28.361 2.19986 32.3462 3.85057C36.3314 5.50129 39.7376 8.29668 42.134 11.8833C44.5305 15.4698 45.8096 19.6865 45.8096 24L24 24L24 45.8096Z"
+                  ></path>
+                </svg>
+              </div>
+              <span>© 2024 EyeScanDrive. Todos los derechos reservados.</span>
+            </div>
+            <div class="flex items-center gap-6 text-sm">
+              <a
+                class="text-gray-400 transition-colors hover:text-white"
+                href="#"
+                >Términos</a
+              >
+              <a
+                class="text-gray-400 transition-colors hover:text-white"
+                href="#"
+                >Política de Privacidad</a
+              >
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- 1. Funcionalidad de Descarga de APK ---
+
+        // REEMPLAZA ESTA URL CON LA URL REAL DE TU APK
+        // Para Google Drive, usa el formato de descarga directa:
+        // https://drive.google.com/uc?export=download&id=TU_FILE_ID
+        const DOWNLOAD_URL =
+          "https://drive.google.com/uc?export=download&id=1XsbK1fKqKDjnmzxQHwPPQCn25nOIG24D";
+
+        /**
+         * Maneja el evento de clic para iniciar la descarga de la APK.
+         */
+        function handleDownload(e) {
+          e.preventDefault();
+
+          // Crear elemento <a> temporal para forzar descarga
+          const link = document.createElement("a");
+          link.href = DOWNLOAD_URL;
+          link.download = "EyeScanDrive.apk"; // Nombre del archivo al descargar
+          link.target = "_blank"; // Abrir en nueva pestaña como respaldo
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+
+          // Mostrar mensaje de confirmación
+          alert(
+            "¡Descarga de EyeScanDrive iniciada! Revisa tu carpeta de descargas."
+          );
+        }
+
+        // Obtener todos los botones con IDs para la descarga
+        const downloadButtons = document.querySelectorAll(
+          "#download-btn-header, #download-btn-hero, #download-btn-footer"
+        );
+
+        // Asignar el event listener a cada botón
+        downloadButtons.forEach((button) => {
+          if (button) {
+            button.addEventListener("click", handleDownload);
+          }
+        });
+
+        // --- 2. Funcionalidad de Desplazamiento Suave (Smooth Scroll) y Cierre de Menú ---
+
+        /**
+         * Maneja el desplazamiento suave y opcionalmente cierra el menú móvil.
+         */
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              // Desplazamiento suave
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+              });
+
+              // Si se hace clic desde el menú móvil, ciérralo.
+              const mobileMenu = document.getElementById("mobile-menu");
+              if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+                mobileMenu.classList.add("hidden");
+                mobileMenu.classList.remove("flex");
+              }
+            }
+          });
+        });
+
+        // --- 3. Funcionalidad del Menú de Navegación Móvil ---
+        const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        if (mobileMenuToggle && mobileMenu) {
+          mobileMenuToggle.addEventListener("click", () => {
+            const isHidden = mobileMenu.classList.contains("hidden");
+
+            if (isHidden) {
+              mobileMenu.classList.remove("hidden");
+              mobileMenu.classList.add("flex");
+              // Opcional: Cambiar ícono a 'close'
+              const iconOpen = mobileMenuToggle.querySelector(
+                ".material-symbols-outlined"
+              );
+              if (iconOpen) iconOpen.textContent = "close";
+            } else {
+              mobileMenu.classList.add("hidden");
+              mobileMenu.classList.remove("flex");
+              // Opcional: Cambiar ícono a 'menu'
+              const iconClose = mobileMenuToggle.querySelector(
+                ".material-symbols-outlined"
+              );
+              if (iconClose) iconClose.textContent = "menu";
+            }
+          });
+        }
+
+        // --- 4. Funcionalidad del Carrusel de Imágenes ---
+        const carouselContainer = document.getElementById("carousel-container");
+        const prevBtn = document.getElementById("carousel-prev");
+        const nextBtn = document.getElementById("carousel-next");
+        const dots = document.querySelectorAll(".carousel-dot");
+
+        let currentIndex = 0;
+        const totalImages = 4;
+
+        function updateCarousel() {
+          const offset = -currentIndex * 100;
+          carouselContainer.style.transform = `translateX(${offset}%)`;
+
+          // Actualizar indicadores
+          dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+              dot.classList.remove("bg-white/50");
+              dot.classList.add("bg-primary", "w-6");
+            } else {
+              dot.classList.remove("bg-primary", "w-6");
+              dot.classList.add("bg-white/50");
+            }
+          });
+        }
+
+        if (prevBtn && nextBtn) {
+          prevBtn.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+          });
+
+          nextBtn.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+          });
+        }
+
+        // Funcionalidad de los indicadores de puntos
+        dots.forEach((dot) => {
+          dot.addEventListener("click", () => {
+            currentIndex = parseInt(dot.getAttribute("data-index"));
+            updateCarousel();
+          });
+        });
+
+        // Carrusel automático (opcional, cada 5 segundos)
+        setInterval(() => {
+          currentIndex = (currentIndex + 1) % totalImages;
+          updateCarousel();
+        }, 5000);
+
+        // Inicializar carrusel
+        updateCarousel();
+
+        // --- 5. Funcionalidad de Acordeón FAQ (Detalles) ---
+        // La sintaxis de los <details> en HTML es nativa y funcional por sí misma.
+        // El CSS (Tailwind) con las clases 'group' y 'group-open:rotate-180' maneja la animación del icono.
+
+        console.log(
+          "Página EyeScanDrive cargada. Funcionalidad JavaScript lista."
+        );
+      });
+    </script>
+  </body>
+</html>
